@@ -11,3 +11,12 @@ class Product(models.Model):
     is_published = models.BooleanField()
     last_created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    review_title = models.CharField(max_length=200)
+    review_text = models.TextField()
+    is_published = models.BooleanField()
+    last_created = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
