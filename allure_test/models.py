@@ -9,5 +9,5 @@ class Product(models.Model):
     product_description = models.TextField()
     price = models.IntegerField()
     is_published = models.BooleanField()
-    last_created = models.DateTimeField(editable=False)
-    last_updated = models.DateTimeField(editable=False)
+    last_created = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
