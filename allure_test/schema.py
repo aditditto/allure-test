@@ -30,6 +30,10 @@ class CreateReviewMutation(graphene.Mutation):
         except Product.DoesNotExist:
             raise Exception("Product with given UUID not found.")
 
+        if len(review_title) > 200:
+            raise Exception(
+                "Review title should not be longer than 200 characters")
+
         created = product.review_set.create(
             review_title=review_title, review_text=review_text, is_published=True)
 
