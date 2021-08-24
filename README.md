@@ -11,16 +11,18 @@ A GraphQL API built using Django and graphene. Made as an excerise for Allure AI
 
 ### Running in development mode
 
-before running the project, you can create an admin user to access the admin dashboard by running:
-```
-python manage.py createsuperuser
-```
-
 to run this project, open this repo in your terminal and run these commands:
 
 ```
 docker build . -t aditditto/allure-test
-docker run -p 8000:8000 aditditto/allure-test
+docker run -d -p 8000:8000 --name=<CONTAINER_NAME> aditditto/allure-test
+```
+
+after that, you might have to run these commands to migrate the database and create an admin user:
+
+```
+docker exec -it <CONTAINER_NAME> python manage.py migrate
+docker exec -it <CONTAINER_NAME> python manage.py createsuperuser
 ```
 
 after that, the project should be running at `localhost:8000`. The admin dashboard is located at `localhost:8000/admin` and the GraphiQL is located at `localhost:8000/graphql`
